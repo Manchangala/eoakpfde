@@ -1,0 +1,23 @@
+<!-- cart.html -->
+{% extends 'bakery/base.html' %}
+{% block title %}Cart{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2>Cart</h2>
+    <div class="list-group">
+        {% for item in cart_items %}
+        <div class="list-group-item d-flex justify-content-between align-items-center">
+            <span>{{ item.product.name }}</span>
+            <span>Total: ${{ item.get_cost }}</span>
+            <a href="{% url 'remove_from_cart' item.id %}" class="btn btn-sm btn-danger">Remove</a>
+        </div>
+        {% endfor %}
+    </div>
+    <div class="text-right mt-3">
+        <a href="{% url 'confirm_order' %}" class="btn btn-success">Proceed to Confirmation</a>
+    </div>
+</div>
+{% endblock %}
+
+

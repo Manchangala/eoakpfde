@@ -1,0 +1,26 @@
+{% extends "bakery/order_base.html" %}
+
+{% block title %}Delivery Options - QUILLA's BAKERY{% endblock %}
+
+{% block order_content %}
+<div class="container mt-5">
+    <h2>Delivery Options</h2>
+    <form method="post">
+        {% csrf_token %}
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="delivery_option" id="delivery_option1" value="pickup" {% if order.delivery_option == 'pickup' %}checked{% endif %}>
+            <label class="form-check-label" for="delivery_option1">
+                Pick up at store
+            </label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="delivery_option" id="delivery_option2" value="delivery" {% if order.delivery_option == 'delivery' %}checked{% endif %}>
+            <label class="form-check-label" for="delivery_option2">
+                Home delivery
+            </label>
+        </div>
+        <button type="submit" class="btn btn-primary mt-3">Proceed to Checkout</button>
+    </form>
+</div>
+{% endblock %}
+

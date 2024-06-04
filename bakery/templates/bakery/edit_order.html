@@ -1,0 +1,14 @@
+{% extends "bakery/base.html" %}
+
+{% block title %}Edit Order - QUILLA's BAKERY{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2>Edit Order</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary">Update Order</button>
+    </form>
+</div>
+{% endblock %}

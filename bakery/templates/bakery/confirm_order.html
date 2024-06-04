@@ -1,0 +1,14 @@
+<!-- confirm_order.html -->
+{% extends 'bakery/base.html' %}
+{% block title %}Confirm Order{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2>Confirm Order</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary">Confirm Order</button>
+    </form>
+</div>
+{% endblock %}

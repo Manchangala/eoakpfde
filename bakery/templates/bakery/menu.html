@@ -1,0 +1,30 @@
+{% extends "bakery/order_base.html" %}
+
+{% block title %}Menu - QUILLA's BAKERY{% endblock %}
+
+{% block order_content %}
+<div class="container mt-5">
+    <h2 class="mb-4">Menu</h2>
+    <div class="row">
+        {% for product in products %}
+        <div class="col-md-4">
+            <div class="card mb-4 shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title">{{ product.name }}</h5>
+                    <p class="card-text">{{ product.description }}</p>
+                    <p class="card-text"><strong>${{ product.price }}</strong></p>
+                    <form method="post" action="{% url 'add_to_cart' product.id %}">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <input type="number" name="quantity" value="1" min="1" class="form-control">
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block">Add to Cart</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
+

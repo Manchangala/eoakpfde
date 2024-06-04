@@ -1,0 +1,10 @@
+{% extends "bakery/base.html" %}
+
+{% block title %}Home - QUILLA's BAKERY{% endblock %}
+
+{% block content %}
+<div class="jumbotron text-center">
+    <h1 class="display-4">Welcome to QUILLA's BAKERY</h1>
+    <p class="lead">Please <a href="{% url 'login' %}" class="btn btn-primary">Login</a> or <a href="{% url 'register' %}" class="btn btn-secondary">Register</a> to continue.</p>
+</div>
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends "bakery/order_base.html" %}
+
+{% block title %}Checkout - QUILLA's BAKERY{% endblock %}
+
+{% block order_content %}
+<div class="container mt-5">
+    <h2>Checkout</h2>
+    <ul class="list-group mb-4">
+        {% for item in order.orderitem_set.all %}
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+            {{ item.product.name }} - {{ item.quantity }} x ${{ item.price }}
+            <span>Total: ${{ item.get_cost }}</span>
+        </li>
+        {% endfor %}
+    </ul>
+    <div class="text-right">
+        <form method="post">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-success">Confirm Order</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

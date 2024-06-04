@@ -1,0 +1,11 @@
+<!-- order_success.html -->
+{% extends 'bakery/base.html' %}
+{% block title %}Order Success{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2>Order Placed Successfully!</h2>
+    <p>Thank you for your order. It has been placed successfully.</p>
+    <a href="{% url 'menu' %}" class="btn btn-primary">Back to Menu</a>
+</div>
+{% endblock %}

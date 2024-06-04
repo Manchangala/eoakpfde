@@ -1,0 +1,22 @@
+{% extends 'bakery/base.html' %}
+{% block title %}Reports & Analysis{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2>Reports & Analysis</h2>
+    <form method="get">
+        <!-- Add any filters you need here -->
+        <button type="submit" class="btn btn-primary">Generate Report</button>
+    </form>
+
+    <h3>Total Orders: {{ total_orders }}</h3>
+    <h3>Total Revenue: ${{ total_revenue }}</h3>
+
+    <h4>Top Products</h4>
+    <ul>
+        {% for product in top_products %}
+        <li>{{ product.product__name }}: {{ product.count }} orders</li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}

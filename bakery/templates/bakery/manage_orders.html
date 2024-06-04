@@ -1,0 +1,33 @@
+{% extends 'bakery/base.html' %}
+{% block title %}Manage Orders{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2>Manage Orders</h2>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Customer</th>
+                <th>Delivery Option</th>
+                <th>Special Requests</th>
+                <th>Delivered</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for order in orders %}
+            <tr class="{% if not order.is_delivered %}table-danger{% else %}table-success{% endif %}">
+                <td>{{ order.customer.user.username }}</td>
+                <td>{{ order.delivery_option }}</td>
+                <td>{{ order.special_requests }}</td>
+                <td>{{ order.is_delivered }}</td>
+                <td>
+                    <a href="{% url 'edit_order' order.id %}" class="btn btn-sm btn-warning">Edit</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
+
